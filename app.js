@@ -16,9 +16,7 @@ let player2 = document.querySelector("#playertwo");
 let playerone = 0;
 let playertwo = 0;
 
-
-
-               
+              
 let pressed = 0;
 
 const winnerpair = [
@@ -30,17 +28,11 @@ const winnerpair = [
     [2,4,6],
     [1,4,7],
     [3,4,5]
-   
 ];
 
-
 btn.forEach((box) => {
-
-    box.addEventListener( "click" , () =>{
-
-        
-
-        if(!pressed){
+    box.addEventListener( "click" , () =>{ 
+      if(!pressed){
             box.innerText = "X";
             pressed = 1;
             box.style.color = "white";
@@ -51,13 +43,8 @@ btn.forEach((box) => {
              pressed = 0;
              box.style.color = "white";
              box.style.backgroundColor = "#12355B";
-             
-             
-
         }
         box.disabled = true;
-
-        
 
         checkwinner();
         drawcheck();
@@ -71,50 +58,30 @@ btn.forEach((box) => {
 
 
 const drawcheck = () =>{
-
     let temp = 0;
-
     btn.forEach((box) => {
-
-
-
-        if(box.innerText=="X"||box.innerText=="O"){
+      if(box.innerText=="X"||box.innerText=="O"){
             temp++;
         }
-
     });
 
     if(temp==9){
         if(para.innerText==""){
             
         para.innerText = "Draw the match...";
-
-        }
-
+     }
     }
 }
 
 
-const disablebtn = () =>{
-
-    
+const disablebtn = () =>{ 
 btn.forEach((box) => {
-
     box.disabled = true;
-
 });
 }
 
-
-
-
-
 const checkwinner = () =>{
-
-    
-
-    for( let value of winnerpair){
-
+    for( let value of winnerpair){ 
 
         let pos1 = btn[value[0]].innerText;
         let pos2 = btn[value[1]].innerText;
@@ -148,12 +115,24 @@ const checkwinner = () =>{
 
 }
 
+const finalwinner = () =>{
+    if(playerone==3){
+      names.style.visibility = "hidden";
+      finalwin.innerText = "PLAYER ONE WON THE GAME !...";
+      para.innerText = "";
+}
+    if(playertwo==3){
+       names.style.visibility = "hidden";
+       finalwin.style.color = "#12355B";
+        finalwin.innerText = "PLAYER TWO WON THE GAME !...";
+        para.innerText = ""; 
+    }
+}
+
+
 reset.onclick = () =>{
-
     para.innerText=" ";
-
-    
-    
+ 
     btn.forEach((box) => {
       
         box.innerText = " ";
@@ -166,12 +145,8 @@ reset.onclick = () =>{
 }
 
 resetAll.onclick = () =>{
-
-    
     para.innerText=" ";
 
-    
-    
     btn.forEach((box) => {
       
         box.innerText = " ";
@@ -191,23 +166,6 @@ resetAll.onclick = () =>{
     player2.innerText = "0";
 }
 
-const finalwinner = () =>{
-    if(playerone==3){
-      names.style.visibility = "hidden";
-      finalwin.innerText = "PLAYER ONE WON THE GAME !...";
-      para.innerText = "";
-}
-    if(playertwo==3){
-       names.style.visibility = "hidden";
-       finalwin.style.color = "#12355B";
-        finalwin.innerText = "PLAYER TWO WON THE GAME !...";
-        para.innerText = "";
-
-        
-    }
-
-
-}
 
 
 
